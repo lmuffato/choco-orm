@@ -1,0 +1,9 @@
+
+pymongo             # Comunicação entre python e mongo
+psycopg2            # Comunicação entre python e postgres
+pymysql             # Comunicação entre python e mysql
+
+
+# test
+# python-dotenv       # Para o pythona cessar as variáveis de ambiente
+# redis               # Comunicação entre python e redis
