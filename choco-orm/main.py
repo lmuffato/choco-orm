@@ -18,23 +18,23 @@ POSTGRES_CONFIG = PostgresConfig().get_config()
 locations = QueryBuilder().Postgres(**POSTGRES_CONFIG)
 query = QueryBuilder().Postgres(**POSTGRES_CONFIG)
 
-results = (
-    locations
-    # .get_query()
-    .select(['country AS pais', 'population AS populacao'])
-    .from_table('locations')
-    .where_subquery('population', 'IN',
-        lambda: locations.select(['population']),
-        lambda: locations.from_table('locations'),
-        lambda: locations.where('country', '=', 'Brazil'),
-        lambda: locations.subquery(
-            lambda: locations.where('country', '=', 'Brazil'),
-            lambda: locations.where_or('population', '>', 1000),
-            combinator='AND'
-        )
-    )
-    .get()
-)
+# results = (
+#     locations
+#     # .get_query()
+#     .select(['country as pais', 'population as populacao'])
+#     .from_table('locations')
+#     .where_subquery('population', 'IN',
+#         lambda: locations.select(['population']),
+#         lambda: locations.from_table('locations'),
+#         lambda: locations.where('country', '=', 'Brazil'),
+#         lambda: locations.subquery(
+#             lambda: locations.where('country', '=', 'Brazil'),
+#             lambda: locations.where_or('population', '>', 1000),
+#             combinator='AND'
+#         )
+#     )
+#     .get()
+# )
 # SELECT country AS pais , population AS populacao FROM public.locations WHERE population IN ( SELECT population FROM public.locations WHERE country = 'Brazil' AND ( country = 'Brazil' OR population > 1000 ) );
 
 # results = (
@@ -49,6 +49,14 @@ results = (
 #SELECT country FROM public.locations WHERE country = 'Brazil' OR population > 1000;
 
 # print(results)
+
+results = (
+    locations
+    .select(['country'])
+    .from_table('locations')
+    .where('country', '=', 'Brazil')
+    .get()
+)
 
 for result in results:
     print(result)
