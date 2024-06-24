@@ -1,12 +1,12 @@
-# choco-orm
+# pyjararaca orm
 <br/>
 Construction of a python package for communicating with various databases, including mysql, postgres, mongod, csv, txt, json and xml.<br/>
 
 ## To execute the project:<br/>
 
 clone the project and enter the root directory:<br/>
-`git clone git@github.com:lmuffato/choco-orm.git` <br/>
-`cd choco-orm`
+`git clone git@github.com:lmuffato/pyjararaca.git` <br/>
+`cd pyjararaca`
 
 Create the virtual environment:<br/>
 `python3 -m venv venv`
